@@ -17,7 +17,13 @@ export const Container = styled.View`
 export const  Wrapper = styled.View`
     display: flex;
     flex-direction:row;
-    justify-content: space-around;
-   
-    ;
+    padding: 10px 20px;
+    justify-content: space-between;
+    align-items: center;
+    border:1px;
+    border-top-color: gray;
+    border-bottom-color: gray;
+    border-left-color: white;
+    border-right-color: white;
 `;
+

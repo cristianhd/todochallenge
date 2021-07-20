@@ -1,9 +1,12 @@
 import React , {Fragment} from "react";
-import { Text, View } from "react-native";
+import { Button, Pressable, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import { Container, Icons, Wrapper } from "./Styles";
+import { useState } from "react";
 
 const NavBar =()=>{
+
+    const [state,setState] = useState("All")
     return (
         <Fragment>
             <Container>
@@ -17,7 +20,22 @@ const NavBar =()=>{
                 </Icons>
             </Container>
             <Wrapper>
-
+                <Pressable 
+                    onPress={()=>alert("all")}>
+                        <Text>All</Text>
+                </Pressable>
+                <Pressable 
+                    onPress={()=>alert("completed")}>
+                        <Text>Completed</Text>
+                </Pressable>
+                <Pressable 
+                    onPress={()=>alert("uncompleted")}>
+                        <Text>Uncompleted</Text>
+                </Pressable>
+                <Pressable 
+                    onPress={()=>alert("favorite")}>
+                        <Text>Favorite</Text>
+                </Pressable>  
             </Wrapper>
         </Fragment>
     )
