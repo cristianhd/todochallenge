@@ -9,7 +9,7 @@ const Home = ({navigation})=>{
         <View>
            <NavBar></NavBar>
            <Button
-        title="Go to Details"
+        title="Add a Task"
         onPress={() => navigation.navigate('Form')}
       />
         </View>
