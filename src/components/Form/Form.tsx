@@ -1,5 +1,5 @@
 import React, { Fragment, useState} from "react";
-import { View, TextInput,Text, Pressable, GestureResponderEvent, TouchableOpacity } from "react-native";
+import { View, TextInput,Text, Button, Alert, Pressable, GestureResponderEvent, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker, { Event, AndroidEvent } from "@react-native-community/datetimepicker";
@@ -15,13 +15,15 @@ type AddTask ={
 }
 type AndroidMode = "date" | "time"
 
-const currentTime = new Date().getHours().toString() + ":" + new Date().getMinutes().toString()
-
+const currentTime = new Date().getHours() + ":" + new Date().getMinutes()
 
 const Form =()=>{
-
-    const {control,handleSubmit} = useForm<AddTask>();
-
+    
+    const {control,handleSubmit,setValue} = useForm<AddTask>();
+     const onSubmit = handleSubmit(data => console.log(data));
+   
+     
+    
     const [date, setDate] = useState<Date>(new Date());
     const [startime, setStartTime] = useState<string>(currentTime)
     const [endtime, setEndTime] = useState<string>(currentTime)
@@ -31,30 +33,30 @@ const Form =()=>{
 
   const handlerOnChangeDate = (e: Event | AndroidEvent, selectedDate?: Date | undefined) => {
       const currentDate = selectedDate || date
+        console.log("date",selectedDate);
+        
+      if(e.type==="set") {setShowD(false);
       setDate(currentDate)
-        setShowD(false);
+      setValue("deadline",currentDate)
+    }
+        
      
     
     };
 const handlerOnChangeStartTime = (event: Event | AndroidEvent,  selectedDate?: Date | undefined) =>{
     console.log(selectedDate?.getUTCHours());
     
-    if(selectedDate != undefined)
-    {
-    const currentTime = selectedDate.getHours().toString() + ":" + selectedDate.getMinutes().toString() 
-    setStartTime(currentTime);
-    }
+    const currentTime = selectedDate?.getHours().toString() + ":" + selectedDate?.getMinutes().toString() 
+    if(event.type==="set"){setShowS(false);
+    setStartTime(currentTime);}
 };
 
 const handlerOnChangeEndTime = (event: Event | AndroidEvent,  selectedDate?: Date | undefined) =>{
     console.log(selectedDate);
+    const currentTime = selectedDate?.getHours().toString() + ":" + selectedDate?.getMinutes().toString() 
     
-    if(selectedDate != undefined)
-    {
-    const currentTime = selectedDate.getHours().toString() + ":" + selectedDate.getMinutes().toString() 
-    setEndTime(currentTime);
-}
-    setShowE(false);
+    if(event.type==="set"){setShowE(false);
+   setEndTime(currentTime)}
 };
  
 
@@ -68,8 +70,11 @@ console.log("entre al showdatepicker");
    
   };
 
-  const showTimepicker = () => {
+  const showStarTimepicker = () => {
     setShowS(true)
+  };
+  const showEndTimepicker = () => {
+    setShowE(true)
   };
 
 // useEffect(()=>{
@@ -101,15 +106,14 @@ console.log("entre al showdatepicker");
                 rules={{
                 required: true,
                 }}
-                render={() => (
+                render={({field:{value}}) => (
                     <View>
                         <TouchableOpacity onPress={()=>showDatepicker()}>
                             <Text>
                                 {`${date.toISOString().slice(0,10)  } `}
                             </Text>
-                        </TouchableOpacity>
                         {showD && <DateTimePicker
-                            value={date}
+                            value={value}
                             mode= "date"
                             is24Hour={true} 
                             display="calendar"
@@ -117,6 +121,7 @@ console.log("entre al showdatepicker");
                                 handlerOnChangeDate(e,date);
                             }
                         }/>}
+                        </TouchableOpacity>
                     </View>)}
                 name="deadline"
                 defaultValue= {date}
@@ -130,7 +135,7 @@ console.log("entre al showdatepicker");
                 }}
                 render={() => (
                     <View>
-                        <TouchableOpacity onPress={()=>showTimepicker()}>
+                        <TouchableOpacity onPress={()=>showStarTimepicker()}>
                             <Text>
                                 {`${startime} `}
                             </Text>
@@ -157,12 +162,12 @@ console.log("entre al showdatepicker");
                 }}
                 render={() => (
                     <View>
-                        <TouchableOpacity onPress={()=>showTimepicker()}>
+                        <TouchableOpacity onPress={()=>showEndTimepicker()}>
                             <Text>
                                 {`${endtime} `}
                             </Text>
                         </TouchableOpacity>
-                        {showS && <DateTimePicker
+                        {showE && <DateTimePicker
                             value={date}
                             mode= "time"
                             is24Hour={false} 
@@ -214,8 +219,13 @@ console.log("entre al showdatepicker");
                     </Picker>
                 )}
                 name="repeat"
-                defaultValue=""
+                
             />
+             <Button
+        title="Create a Task"
+        onPress={onSubmit}
+      />
+        
         </Fragment>
     )
 };
