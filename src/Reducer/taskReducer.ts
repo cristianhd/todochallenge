@@ -23,12 +23,17 @@ type taskState =
 const TaskReducer = (state:Array<taskState> = initialState, action:TaskAction)=>{
     switch (action.type) {
         case 'ADD_TASK':
-            return{
-                
-                    task: action.payload,
-                    complete:false
-                
-            }
+            
+                return[
+                    ...state,
+                    {
+                        task: action.payload,
+                        complete:false
+                    }
+                ]
+            
+           
+            
         default:
             return state;
     }
