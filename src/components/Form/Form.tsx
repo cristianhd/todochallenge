@@ -49,6 +49,7 @@ const handlerOnChangeStartTime = (event: Event | AndroidEvent,  selectedDate?: D
     const currentTime = selectedDate?.getHours().toString() + ":" + selectedDate?.getMinutes().toString() 
     if(event.type==="set"){setShowS(false);
     setStartTime(currentTime);}
+    // setValue
 };
 
 const handlerOnChangeEndTime = (event: Event | AndroidEvent,  selectedDate?: Date | undefined) =>{
@@ -57,6 +58,7 @@ const handlerOnChangeEndTime = (event: Event | AndroidEvent,  selectedDate?: Dat
     
     if(event.type==="set"){setShowE(false);
    setEndTime(currentTime)}
+   //SetValue
 };
  
 
