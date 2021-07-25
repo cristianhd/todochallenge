@@ -4,22 +4,23 @@ import { useForm, Controller } from "react-hook-form";
 import {Picker} from '@react-native-picker/picker';
 import DateTimePicker, { Event, AndroidEvent } from "@react-native-community/datetimepicker";
 import { useEffect } from "react";
+import { ITask } from "../../actions";
 
-type AddTask ={
-    title: string,
-    deadline: Date,
-    startime: string,
-    endtime: string,
-    remind: string,
-    repeat: string
-}
+// type AddTask ={
+//     title: string,
+//     deadline: Date,
+//     startime: string,
+//     endtime: string,
+//     remind: string,
+//     repeat: string
+// }
 type AndroidMode = "date" | "time"
 
 const currentTime = new Date().getHours() + ":" + new Date().getMinutes()
 
 const Form =()=>{
     
-    const {control,handleSubmit,setValue} = useForm<AddTask>();
+    const {control,handleSubmit,setValue} = useForm<ITask>();
      const onSubmit = handleSubmit(data => console.log(data));
    
      
