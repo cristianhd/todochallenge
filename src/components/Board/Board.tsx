@@ -3,19 +3,20 @@ import { View , Text,SafeAreaView,FlatList, GestureResponderEvent} from "react-n
 import { CheckBox} from "react-native-elements";
 import { useDispatch } from "react-redux";
 
+
 import { ITask } from "../../actions";
 
 
 
 interface BoardProps {
-	tasks: any[];
-	
+	tasks: any[],
+	tab: string
 }
 
 
 
 
-const Board = ({tasks}:BoardProps)=>{
+const Board = ({tasks,tab}:BoardProps)=>{
     console.log("board",tasks);
 
     const dispatch = useDispatch();
@@ -25,6 +26,9 @@ const Board = ({tasks}:BoardProps)=>{
         dispatch({type:"COMPLETE_TODO",payload:id})
         
     }
+
+    console.log("tab",tab);
+    
     
 
 
@@ -39,7 +43,7 @@ const Board = ({tasks}:BoardProps)=>{
                     console.log("render",item);
                     
                     return(
-                        <View>
+                        
                             <CheckBox
   
   title={item.task.title}
@@ -50,7 +54,7 @@ const Board = ({tasks}:BoardProps)=>{
 
   
                             
-                        </View>
+                       
                     )
                 }}
             />

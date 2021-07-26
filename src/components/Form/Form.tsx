@@ -212,7 +212,7 @@ console.log("entre al showdatepicker");
                     </Picker>
                 )}
                 name="remind"
-                defaultValue=""
+                defaultValue="10min"
             />
 
             <Text>Repeat</Text>
@@ -231,7 +231,7 @@ console.log("entre al showdatepicker");
                     </Picker>
                 )}
                 name="repeat"
-                
+                defaultValue="month"
             />
              <Button
         title="Create a Task"

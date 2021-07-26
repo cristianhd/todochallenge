@@ -1,18 +1,20 @@
 
 import { Reducer } from "react";
+import { ActionSheetIOS } from "react-native";
 import { ITask, TaskAction } from "../actions";
 
 
 interface taskState 
 {
     
-    tasks: any[]
+    tasks: any[],
+    tab: string
 }
 
 
 const initialState= {
-    tasks : []
-    
+    tasks : [],
+    tab:"all"
 }
 
 
@@ -32,9 +34,7 @@ const TaskReducer = (state:taskState = initialState, action:TaskAction)=>{
         case 'COMPLETE_TODO':
             return {
                 ...state,
-                tasks: 
-                   
-                     state.tasks.map((item => {
+                tasks: state.tasks.map((item => {
                     
                     if(item.task.id==action.payload){
                         
@@ -47,13 +47,15 @@ const TaskReducer = (state:taskState = initialState, action:TaskAction)=>{
                         }else{
                             return item;
                         }
-
-                  
-                    }
-                
-                ))
+                    }))
                 
             }
+            
+            case 'CHANGE_TAB':
+                return   {
+                    ...state,
+                    tab: action.payload
+                }
             
            
             

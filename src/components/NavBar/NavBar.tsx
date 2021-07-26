@@ -1,12 +1,21 @@
-import React , {Fragment} from "react";
+import React , {Fragment, useEffect} from "react";
 import { Button, Pressable, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import { Container, Icons, Wrapper } from "./Styles";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const NavBar =()=>{
 
-    const [state,setState] = useState("All")
+    const [tab,setTab] = useState<string>("all")
+    const dispatch = useDispatch()
+    
+    const onChange = (tab:string)=>{
+
+        dispatch({type:"CHANGE_TAB",payload:tab})
+    }
+    console.log("nav",tab);
+    
     return (
         <Fragment>
             <Container>
@@ -21,19 +30,19 @@ const NavBar =()=>{
             </Container>
             <Wrapper>
                 <Pressable 
-                    onPress={()=>alert("all")}>
+                    onPress={()=>onChange("all")}>
                         <Text>All</Text>
                 </Pressable>
                 <Pressable 
-                    onPress={()=>alert("completed")}>
+                    onPress={()=>onChange("complete")}>
                         <Text>Completed</Text>
                 </Pressable>
                 <Pressable 
-                    onPress={()=>alert("uncompleted")}>
+                    onPress={()=>onChange("uncomplete")}>
                         <Text>Uncompleted</Text>
                 </Pressable>
                 <Pressable 
-                    onPress={()=>alert("favorite")}>
+                    onPress={()=>onChange("favorites")}>
                         <Text>Favorite</Text>
                 </Pressable>  
             </Wrapper>

@@ -20,5 +20,10 @@ export interface ICompleteTodo {
   payload: number
 }
 
+export interface IChange_Tab {
+  readonly type: 'CHANGE_TAB',
+  payload: string
+}
 
-export type TaskAction = IAddTaskAction | ICompleteTodo ;
+
+export type TaskAction = IAddTaskAction | ICompleteTodo | IChange_Tab ;
