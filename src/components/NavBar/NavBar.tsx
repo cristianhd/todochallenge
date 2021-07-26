@@ -4,14 +4,17 @@ import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import { Container, Icons, Wrapper } from "./Styles";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Tab } from 'react-native-elements';
 
 const NavBar =()=>{
 
-    const [tab,setTab] = useState<string>("all")
+    const [tab,setTab] = useState<number>(0)
+    
     const dispatch = useDispatch()
     
-    const onChange = (tab:string)=>{
-
+    
+    const onChange = (tab:number)=>{
+        setTab(tab);
         dispatch({type:"CHANGE_TAB",payload:tab})
     }
     console.log("nav",tab);
@@ -28,24 +31,13 @@ const NavBar =()=>{
                     <Ionicons name="menu" size={15} color="gray" />
                 </Icons>
             </Container>
-            <Wrapper>
-                <Pressable 
-                    onPress={()=>onChange("all")}>
-                        <Text>All</Text>
-                </Pressable>
-                <Pressable 
-                    onPress={()=>onChange("complete")}>
-                        <Text>Completed</Text>
-                </Pressable>
-                <Pressable 
-                    onPress={()=>onChange("uncomplete")}>
-                        <Text>Uncompleted</Text>
-                </Pressable>
-                <Pressable 
-                    onPress={()=>onChange("favorites")}>
-                        <Text>Favorite</Text>
-                </Pressable>  
-            </Wrapper>
+            <Tab value={tab} onChange={onChange}>
+  <Tab.Item title="All" />
+  <Tab.Item title="Complete" />
+  <Tab.Item title="Uncomplete" />
+  <Tab.Item title ="Favorite"/>
+</Tab>
+
         </Fragment>
     )
 };

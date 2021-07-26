@@ -8,13 +8,13 @@ interface taskState
 {
     
     tasks: any[],
-    tab: string
+    tab: number
 }
 
 
 const initialState= {
     tasks : [],
-    tab:"all"
+    tab:0
 }
 
 
