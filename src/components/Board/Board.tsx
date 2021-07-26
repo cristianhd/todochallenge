@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { View , Text,SafeAreaView,FlatList} from "react-native";
+import { View , Text,SafeAreaView,FlatList, GestureResponderEvent} from "react-native";
 import { CheckBox} from "react-native-elements";
+import { useDispatch } from "react-redux";
 
 import { ITask } from "../../actions";
 
@@ -16,8 +17,14 @@ interface BoardProps {
 
 const Board = ({tasks}:BoardProps)=>{
     console.log("board",tasks);
-    const [toggleCheckBox, setToggleCheckBox] = useState<boolean>(true)
 
+    const dispatch = useDispatch();
+    const [toggleCheckBox, setToggleCheckBox] = useState<boolean>(false)
+
+    const onCheck =(id:string) =>{
+        dispatch({type:"COMPLETE_TODO",payload:id})
+        
+    }
     
 
 
@@ -26,15 +33,19 @@ const Board = ({tasks}:BoardProps)=>{
         <View>
             <FlatList
                 data={tasks}
-                renderItem={({item})=>{
+               
+                keyExtractor={(item,index) => index.toString()}
+                renderItem={({item,index})=>{
+                    console.log("render",item);
+                    
                     return(
                         <View>
                             <CheckBox
   
-  title={item.title}
+  title={item.task.title}
  
-  checked={toggleCheckBox}
-  onPress={(e)=>setToggleCheckBox(e)}
+  checked={item.complete}
+  onPress={()=>onCheck(item.task.id)}
 />
 
   
@@ -42,7 +53,6 @@ const Board = ({tasks}:BoardProps)=>{
                         </View>
                     )
                 }}
-                keyExtractor={(item,index) => index.toString()}
             />
     </View>
 

@@ -1,4 +1,7 @@
+import { GenerateUUID } from "react-native-uuid";
+
 export interface ITask {
+  id: GenerateUUID,
   title: string,
   deadline: Date,
   startime: string,
@@ -12,5 +15,10 @@ export interface IAddTaskAction {
   payload: ITask;
 }
 
+export interface ICompleteTodo {
+  readonly type: 'COMPLETE_TODO';
+  payload: number
+}
 
-export type TaskAction = IAddTaskAction
+
+export type TaskAction = IAddTaskAction | ICompleteTodo ;

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { ITask, IAddTaskAction } from "../../actions";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+import uuid from 'react-native-uuid';
 
 
 // type AddTask ={
@@ -25,8 +26,9 @@ const Form =()=>{
 const {navigate} = useNavigation()
      const dispatch = useDispatch();
     const {control,handleSubmit,setValue} = useForm<ITask>();
+    const id =uuid.v4()
      const onSubmit = handleSubmit(data => {
-         dispatch({type:"ADD_TASK",payload:data})
+         dispatch({type:"ADD_TASK",payload:{...data,id}})
          navigate("Home")
         });
    
