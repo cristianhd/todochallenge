@@ -5,7 +5,7 @@ import NavBar from "./src/components/NavBar/NavBar";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Form from './src/components/Form/Form';
-import Home from './src/components/Home/Home';
+import Home from './src/screens/Home/Home';
 import { Provider } from 'react-redux';
 import store from './src/store';
 

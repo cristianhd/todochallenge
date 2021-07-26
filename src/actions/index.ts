@@ -6,9 +6,7 @@ export interface ITask {
   remind: string,
   repeat: string
 }
-type AddTask ={
 
-}
 export interface IAddTaskAction {
   readonly type: 'ADD_TASK';
   payload: ITask;

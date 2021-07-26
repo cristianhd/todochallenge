@@ -1,36 +1,30 @@
 
+import { Reducer } from "react";
 import { ITask, TaskAction } from "../actions";
 
-const initialState= [
+
+interface taskState 
+{
     
-    {
-        task: {} as ITask,
-        complete: false
-    }
-]
+    tasks: any[]
+}
 
-type taskState = 
-    {
 
-        task: ITask,
-        complete:boolean
-    }
+const initialState= {
+    tasks : []
+    
+}
 
 
 
-
-
-const TaskReducer = (state:Array<taskState> = initialState, action:TaskAction)=>{
+const TaskReducer = (state:taskState = initialState, action:TaskAction)=>{
     switch (action.type) {
         case 'ADD_TASK':
             
-                return[
+                return{
                     ...state,
-                    {
-                        task: action.payload,
-                        complete:false
-                    }
-                ]
+                    tasks: state.tasks.concat(action.payload)
+                }
             
            
             
