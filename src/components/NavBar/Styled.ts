@@ -5,7 +5,7 @@ export const Icons = styled.View`
     display: flex;
     flex-direction:row;
     justify-content: space-between;
-    width: 70px;
+    width: 100px;
 `;
 export const Container = styled.View`
     display: flex;

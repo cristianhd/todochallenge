@@ -5,14 +5,15 @@ const ButtonContainer = styled.TouchableOpacity`
   justify-content: center;
   position: absolute;
   width: 360px;
-  height: 40px;
+  height: 55px;
   padding: 20px 0px;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: #5dbc75
 `;
 const ButtonText = styled.Text`
-
-  font-size: 16px;
+    color: white;
+    
+  font-size: 18px;
   text-align: center;
 `;
 
@@ -21,7 +22,7 @@ interface ButtonProps extends TouchableOpacityProps{
 }
 const PressableButton = ({ onPress, title }:ButtonProps)=> (
   <ButtonContainer onPress={onPress} >
-    <ButtonText>{title}</ButtonText>
+    <ButtonText style={{fontFamily: "Lexend-Regular",}}>{title}</ButtonText>
   </ButtonContainer>
 );
 export default PressableButton;

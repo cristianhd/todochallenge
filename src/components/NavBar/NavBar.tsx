@@ -42,7 +42,7 @@ const NavBar = () => {
         >
 
         
-        <Tab.Item style={{backgroundColor:"white"}} titleStyle={{margin: 0 ,fontFamily: "Lexend-Regular", fontSize: 10,color:"gray",textTransform:"capitalize"}}  title="All"/>
+        <Tab.Item style={{backgroundColor:"white"}} titleStyle={{fontFamily: "Lexend-Regular", fontSize: 10,color:"gray",textTransform:"capitalize"}}  title="All"/>
         <Tab.Item style={{backgroundColor:"white"}} titleStyle={{fontFamily: "Lexend-Regular", fontSize: 10,color:"gray",textTransform:"capitalize"}} title="Comp" />
         <Tab.Item style={{backgroundColor:"white"}} titleStyle={{fontFamily: "Lexend-Regular", fontSize: 10,color:"gray",textTransform:"capitalize"}} title="Uncom" />
         <Tab.Item style={{backgroundColor:"white"}} titleStyle={{fontFamily: "Lexend-Regular", fontSize: 10,color:"gray",textTransform:"capitalize"}} title="Favorite" />

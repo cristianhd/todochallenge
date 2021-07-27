@@ -4,7 +4,7 @@ import { Text, View } from "react-native";
 import NavBar from "./src/components/NavBar/NavBar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Form from "./src/components/Form/Form";
+import Form from "./src/screens/Form/Form";
 import Home from "./src/screens/Home/Home";
 import { Provider } from "react-redux";
 import store from "./src/store";

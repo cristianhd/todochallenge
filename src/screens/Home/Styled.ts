@@ -5,7 +5,10 @@ export const Container =styled.View`
     display: flex;
     flex-direction: column;
     justify-content:space-around;
+    height: 600px ;
 `;
+
+
 
 export const WrapperButton = styled.View`
 position: relative;

@@ -15,10 +15,12 @@ const Home = ({ navigation }) => {
       <NavBar></NavBar>
       <Board tasks={data.taskReducer.tasks} tab={data.taskReducer.tab} />
       <WrapperButton>
-
-      <PressableButton title="Add a Task" onPress={() => navigation.navigate("Form")} color="#5dbc75"/>
+        <PressableButton
+          title="Add a task"
+          onPress={() => navigation.navigate("Form")}
+          color="#5dbc75"
+        />
       </WrapperButton>
-    
     </View>
   );
 };
