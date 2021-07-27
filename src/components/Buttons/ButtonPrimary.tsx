@@ -5,9 +5,9 @@ import { ButtonContainer, ButtonText } from "./Styled";
 interface ButtonProps extends TouchableOpacityProps {
   title: string;
 }
-const PressableButton = ({ onPress, title }: ButtonProps) => (
+const ButtonPrimary = ({ onPress, title }: ButtonProps) => (
   <ButtonContainer onPress={onPress}>
     <ButtonText style={{ fontFamily: "Lexend-Regular" }}>{title}</ButtonText>
   </ButtonContainer>
 );
-export default PressableButton;
+export default ButtonPrimary;

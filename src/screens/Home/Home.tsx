@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Board from "../Board/Board";
 import NavBar from "../../components/NavBar/NavBar";
 import { Container, WrapperButton } from "./Styled";
-import PressableButton from "../../components/Button/Button";
+import ButtonPrimary from "../../components/Buttons/ButtonPrimary";
 import { useNavigation } from "@react-navigation/native";
 import { taskState } from "../../reducer/taskReducer";
 
@@ -22,7 +22,7 @@ const Home = () => {
       <NavBar/>
       <Board tasks={data.taskReducer.tasks} tab={data.taskReducer.tab} />
       <WrapperButton>
-        <PressableButton
+        <ButtonPrimary
           title="Add a task"
           onPress={() => navigate("Add task")}
           

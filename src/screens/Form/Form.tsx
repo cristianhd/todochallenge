@@ -20,7 +20,7 @@ import { ITask, IAddTaskAction } from "../../actions";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import uuid from "react-native-uuid";
-import PressableButton from "../../components/Button/Button";
+import ButtonPrimary from "../../components/Buttons/ButtonPrimary";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 
 import {
@@ -149,11 +149,9 @@ const Form = () => {
           }}
           render={({ field: { value } }) => (
             <TouchableOpacity onPress={() => showDatepicker()}>
-                <WrapperField>
-                <StyleText>
-                  {`${date.toISOString().slice(0, 10)}`}
-                </StyleText>
-                  <FontAwesome5 name="chevron-down" size={20} color="gray" />
+              <WrapperField>
+                <StyleText>{`${date.toISOString().slice(0, 10)}`}</StyleText>
+                <FontAwesome5 name="chevron-down" size={20} color="gray" />
                 {showD && (
                   <DateTimePicker
                     value={value}
@@ -168,8 +166,8 @@ const Form = () => {
                     }}
                   />
                 )}
-            </WrapperField>
-              </TouchableOpacity>
+              </WrapperField>
+            </TouchableOpacity>
           )}
           name="deadline"
           defaultValue={date}
@@ -185,25 +183,25 @@ const Form = () => {
               }}
               render={() => (
                 <TouchableOpacity onPress={() => showStarTimepicker()}>
-                    <WrapperField>
+                  <WrapperField>
                     <StyleText>{`${startime} `}</StyleText>
                     <FontAwesome5 name="clock" size={20} color="#808B96" />
-                    </WrapperField>
+                  </WrapperField>
                   {showS && (
                     <DateTimePicker
-                    value={date}
-                    mode="time"
-                    is24Hour={false}
-                    display="clock"
-                    onChange={(
-                      e: Event | AndroidEvent,
-                      date?: Date | undefined
+                      value={date}
+                      mode="time"
+                      is24Hour={false}
+                      display="clock"
+                      onChange={(
+                        e: Event | AndroidEvent,
+                        date?: Date | undefined
                       ) => {
                         handlerOnChangeStartTime(e, date);
                       }}
-                      />
-                      )}
-                      </TouchableOpacity>
+                    />
+                  )}
+                </TouchableOpacity>
               )}
               name="startime"
               defaultValue={startime}
@@ -218,25 +216,25 @@ const Form = () => {
               }}
               render={() => (
                 <TouchableOpacity onPress={() => showEndTimepicker()}>
-                    <WrapperField>
+                  <WrapperField>
                     <StyleText>{`${endtime}`}</StyleText>
                     <FontAwesome5 name="clock" size={20} color="#808B96" />
-                    </WrapperField>
+                  </WrapperField>
                   {showE && (
                     <DateTimePicker
-                    value={date}
-                    mode="time"
-                    is24Hour={false}
-                    display="clock"
-                    onChange={(
-                      e: Event | AndroidEvent,
-                      date?: Date | undefined
+                      value={date}
+                      mode="time"
+                      is24Hour={false}
+                      display="clock"
+                      onChange={(
+                        e: Event | AndroidEvent,
+                        date?: Date | undefined
                       ) => {
                         handlerOnChangeEndTime(e, date);
                       }}
-                      />
-                      )}
-                      </TouchableOpacity>
+                    />
+                  )}
+                </TouchableOpacity>
               )}
               name="endtime"
               defaultValue={endtime}
@@ -298,7 +296,7 @@ const Form = () => {
           defaultValue="week"
         />
         <WrapperButton>
-          <PressableButton title="Create a Task" onPress={onSubmit} />
+          <ButtonPrimary title="Create a Task" onPress={onSubmit} />
         </WrapperButton>
       </WrapperForm>
     </Container>
