@@ -21,6 +21,7 @@ import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import uuid from "react-native-uuid";
 import PressableButton from "../../components/Button/Button";
+import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 
 import {
   Container,
@@ -29,6 +30,7 @@ import {
   TimePickerContainer,
   WrapperButton,
   WrapperField,
+  WrapperPicker,
   WrapperTime,
 } from "./Styled";
 import { WrapperForm } from "./Styled";
@@ -125,14 +127,15 @@ const Form = () => {
             required: true,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-            defaultValue=""
-              placeholder="     Design team meeting"
-              placeholderTextColor="#808B96"
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-            />
+            <WrapperField>
+              <Input
+                style={{ fontFamily: "Lexend-Regular" }}
+                placeholder="Design team meeting"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+              />
+            </WrapperField>
           )}
           name="title"
           defaultValue=""
@@ -145,9 +148,12 @@ const Form = () => {
             required: true,
           }}
           render={({ field: { value } }) => (
-            <WrapperField>
-              <TouchableOpacity onPress={() => showDatepicker()}>
-                <StyleText>{`${date.toISOString().slice(0, 10)} `}</StyleText>
+            <TouchableOpacity onPress={() => showDatepicker()}>
+                <WrapperField>
+                <StyleText>
+                  {`${date.toISOString().slice(0, 10)}`}
+                </StyleText>
+                  <FontAwesome5 name="chevron-down" size={20} color="gray" />
                 {showD && (
                   <DateTimePicker
                     value={value}
@@ -162,8 +168,8 @@ const Form = () => {
                     }}
                   />
                 )}
-              </TouchableOpacity>
             </WrapperField>
+              </TouchableOpacity>
           )}
           name="deadline"
           defaultValue={date}
@@ -178,25 +184,26 @@ const Form = () => {
                 required: true,
               }}
               render={() => (
-                <WrapperField>
-                  <TouchableOpacity onPress={() => showStarTimepicker()}>
+                <TouchableOpacity onPress={() => showStarTimepicker()}>
+                    <WrapperField>
                     <StyleText>{`${startime} `}</StyleText>
-                  </TouchableOpacity>
+                    <FontAwesome5 name="clock" size={20} color="#808B96" />
+                    </WrapperField>
                   {showS && (
                     <DateTimePicker
-                      value={date}
-                      mode="time"
-                      is24Hour={false}
-                      display="clock"
-                      onChange={(
-                        e: Event | AndroidEvent,
-                        date?: Date | undefined
+                    value={date}
+                    mode="time"
+                    is24Hour={false}
+                    display="clock"
+                    onChange={(
+                      e: Event | AndroidEvent,
+                      date?: Date | undefined
                       ) => {
                         handlerOnChangeStartTime(e, date);
                       }}
-                    />
-                  )}
-                </WrapperField>
+                      />
+                      )}
+                      </TouchableOpacity>
               )}
               name="startime"
               defaultValue={startime}
@@ -210,25 +217,26 @@ const Form = () => {
                 required: true,
               }}
               render={() => (
-                <WrapperField>
-                  <TouchableOpacity onPress={() => showEndTimepicker()}>
-                    <StyleText>{`${endtime} `}</StyleText>
-                  </TouchableOpacity>
+                <TouchableOpacity onPress={() => showEndTimepicker()}>
+                    <WrapperField>
+                    <StyleText>{`${endtime}`}</StyleText>
+                    <FontAwesome5 name="clock" size={20} color="#808B96" />
+                    </WrapperField>
                   {showE && (
                     <DateTimePicker
-                      value={date}
-                      mode="time"
-                      is24Hour={false}
-                      display="clock"
-                      onChange={(
-                        e: Event | AndroidEvent,
-                        date?: Date | undefined
+                    value={date}
+                    mode="time"
+                    is24Hour={false}
+                    display="clock"
+                    onChange={(
+                      e: Event | AndroidEvent,
+                      date?: Date | undefined
                       ) => {
                         handlerOnChangeEndTime(e, date);
                       }}
-                    />
-                  )}
-                </WrapperField>
+                      />
+                      )}
+                      </TouchableOpacity>
               )}
               name="endtime"
               defaultValue={endtime}
@@ -243,25 +251,25 @@ const Form = () => {
             required: true,
           }}
           render={({ field: { onChange, value } }) => (
-            <WrapperField>
+            <WrapperPicker>
               <Picker selectedValue={value} onValueChange={onChange}>
                 <Picker.Item
-                  style={{ color: "#808B96" ,fontFamily:"Lexend-Regular",fontSize: 18}}
+                  color="#808B96"
                   label="  10 minutes early"
                   value="10min"
                 />
                 <Picker.Item
-                  style={{ color: "#808B96" ,fontFamily:"Lexend-Regular",fontSize: 15}}
+                  color="#808B96"
                   label="  1 hour early"
                   value="1hr"
                 />
                 <Picker.Item
-                  style={{ color: "#808B96" ,fontFamily:"Lexend-Regular",fontSize: 15}}
+                  color="#808B96"
                   label="  24 hours early"
                   value="24hr"
                 />
               </Picker>
-            </WrapperField>
+            </WrapperPicker>
           )}
           name="remind"
           defaultValue="10min"
@@ -274,25 +282,17 @@ const Form = () => {
             required: true,
           }}
           render={({ field: { onChange, value } }) => (
-            <WrapperField>
+            <WrapperPicker>
               <Picker selectedValue={value} onValueChange={onChange}>
+                <Picker.Item color="#808B96" label="  Weekly" value="week" />
                 <Picker.Item
-                  style={{ color: "#808B96" ,fontFamily:"Lexend-Regular",fontSize: 18}}
-                  label="  Weekly"
-                  value="week"
-                />
-                <Picker.Item
-                  style={{ color: "#808B96" ,fontFamily:"Lexend-Regular",fontSize: 18}}
+                  color="#808B96"
                   label="  Byweekly"
                   value="byweek"
                 />
-                <Picker.Item
-                  style={{ color: "#808B96" ,fontFamily:"Lexend-Regular",fontSize: 18}}
-                  label="  Monthly"
-                  value="month"
-                />
+                <Picker.Item color="#808B96" label="  Monthly" value="month" />
               </Picker>
-            </WrapperField>
+            </WrapperPicker>
           )}
           name="repeat"
           defaultValue="week"
