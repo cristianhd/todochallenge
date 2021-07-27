@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { CheckBox } from "react-native-elements";
 import { useDispatch } from "react-redux";
-import { Container } from "./Styled";
+import { Container, Void } from "./Styled";
 
 interface BoardProps {
   tasks: any[];
@@ -16,7 +16,7 @@ interface BoardProps {
 }
 
 const Board = ({ tasks, tab }: BoardProps) => {
-  console.log("board", tasks);
+  console.log("board", 0 === true);
 
   const dispatch = useDispatch();
   const [toggleCheckBox, setToggleCheckBox] = useState<boolean>(false);
@@ -110,7 +110,7 @@ const Board = ({ tasks, tab }: BoardProps) => {
   return (
     <Container>
       
-      {renderScreens()}
+      {tasks.length ? renderScreens():<Void></Void>}
     </Container>
   );
 };

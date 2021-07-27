@@ -1,4 +1,4 @@
-// import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 import React from "react";
 import { Text, View } from "react-native";
 import NavBar from "./src/components/NavBar/NavBar";
@@ -51,7 +51,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Form" component={Form} />
+          <Stack.Screen name="Add task" component={Form} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

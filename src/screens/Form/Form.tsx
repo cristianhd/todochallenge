@@ -22,7 +22,14 @@ import { useNavigation } from "@react-navigation/native";
 import uuid from "react-native-uuid";
 import PressableButton from "../../components/Button";
 
-import { Container, Input, WrapperButton } from "./Styled";
+import {
+  Container,
+  Input,
+  TimePickerContainer,
+  WrapperButton,
+  WrapperField,
+  WrapperTime,
+} from "./Styled";
 import { WrapperForm } from "./Styled";
 import Label from "../../components/Label/Label";
 
@@ -110,31 +117,33 @@ const Form = () => {
   return (
     <Container>
       <WrapperForm>
-        <Label
-        title="Title"
-        />
+        <Label title="Title" />
         <Controller
           control={control}
           rules={{
             required: true,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <Input onBlur={onBlur} onChangeText={onChange} value={value} />
+            <Input
+              placeholder="  Design team meeting"
+              placeholderTextColor="#808B96"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
           )}
           name="title"
           defaultValue=""
         />
 
-<Label
-        title="Deadline"
-        />
+        <Label title="Deadline" />
         <Controller
           control={control}
           rules={{
             required: true,
           }}
           render={({ field: { value } }) => (
-            <View>
+            <WrapperField>
               <TouchableOpacity onPress={() => showDatepicker()}>
                 <Text>{`${date.toISOString().slice(0, 10)} `}</Text>
                 {showD && (
@@ -152,111 +161,136 @@ const Form = () => {
                   />
                 )}
               </TouchableOpacity>
-            </View>
+            </WrapperField>
           )}
           name="deadline"
           defaultValue={date}
         />
 
-<Label
-        title="Start time"
-        />
-        <Controller
-          control={control}
-          rules={{
-            required: true,
-          }}
-          render={() => (
-            <View>
-              <TouchableOpacity onPress={() => showStarTimepicker()}>
-                <Text>{`${startime} `}</Text>
-              </TouchableOpacity>
-              {showS && (
-                <DateTimePicker
-                  value={date}
-                  mode="time"
-                  is24Hour={false}
-                  display="clock"
-                  onChange={(
-                    e: Event | AndroidEvent,
-                    date?: Date | undefined
-                  ) => {
-                    handlerOnChangeStartTime(e, date);
-                  }}
-                />
+        <WrapperTime>
+          <TimePickerContainer>
+            <Label title="Start time" />
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+              }}
+              render={() => (
+                <WrapperField>
+                  <TouchableOpacity onPress={() => showStarTimepicker()}>
+                    <Text>{`${startime} `}</Text>
+                  </TouchableOpacity>
+                  {showS && (
+                    <DateTimePicker
+                      value={date}
+                      mode="time"
+                      is24Hour={false}
+                      display="clock"
+                      onChange={(
+                        e: Event | AndroidEvent,
+                        date?: Date | undefined
+                      ) => {
+                        handlerOnChangeStartTime(e, date);
+                      }}
+                    />
+                  )}
+                </WrapperField>
               )}
-            </View>
-          )}
-          name="startime"
-          defaultValue={startime}
-        />
-
-<Label
-        title="End time"
-        />
-        <Controller
-          control={control}
-          rules={{
-            required: true,
-          }}
-          render={() => (
-            <View>
-              <TouchableOpacity onPress={() => showEndTimepicker()}>
-                <Text>{`${endtime} `}</Text>
-              </TouchableOpacity>
-              {showE && (
-                <DateTimePicker
-                  value={date}
-                  mode="time"
-                  is24Hour={false}
-                  display="clock"
-                  onChange={(
-                    e: Event | AndroidEvent,
-                    date?: Date | undefined
-                  ) => {
-                    handlerOnChangeEndTime(e, date);
-                  }}
-                />
+              name="startime"
+              defaultValue={startime}
+            />
+          </TimePickerContainer>
+          <TimePickerContainer>
+            <Label title="End time" />
+            <Controller
+              control={control}
+              rules={{
+                required: true,
+              }}
+              render={() => (
+                <WrapperField>
+                  <TouchableOpacity onPress={() => showEndTimepicker()}>
+                    <Text>{`${endtime} `}</Text>
+                  </TouchableOpacity>
+                  {showE && (
+                    <DateTimePicker
+                      value={date}
+                      mode="time"
+                      is24Hour={false}
+                      display="clock"
+                      onChange={(
+                        e: Event | AndroidEvent,
+                        date?: Date | undefined
+                      ) => {
+                        handlerOnChangeEndTime(e, date);
+                      }}
+                    />
+                  )}
+                </WrapperField>
               )}
-            </View>
-          )}
-          name="endtime"
-          defaultValue={endtime}
-        />
+              name="endtime"
+              defaultValue={endtime}
+            />
+          </TimePickerContainer>
+        </WrapperTime>
 
-<Label
-        title="Remind"
-        />
+        <Label title="Remind" />
         <Controller
           control={control}
           rules={{
             required: true,
           }}
           render={({ field: { onChange, value } }) => (
-            <Picker selectedValue={value} onValueChange={onChange}>
-              <Picker.Item label="10 minutes early" value="10min" />
-              <Picker.Item label="1 hour early" value="1hr" />
-              <Picker.Item label="24 hours early" value="24hr" />
-            </Picker>
+            <WrapperField>
+              <Picker selectedValue={value} onValueChange={onChange}>
+                <Picker.Item
+                  style={{ color: "#808B96" }}
+                  label="10 minutes early"
+                  value="10min"
+                />
+                <Picker.Item
+                  style={{ color: "#808B96" }}
+                  label="1 hour early"
+                  value="1hr"
+                />
+                <Picker.Item
+                  style={{ color: "#808B96" }}
+                  label="24 hours early"
+                  value="24hr"
+                />
+              </Picker>
+            </WrapperField>
           )}
           name="remind"
           defaultValue="10min"
         />
 
-<Label
-        title="Repeat"
-        />
+        <Label title="Repeat" />
         <Controller
           control={control}
           rules={{
             required: true,
           }}
           render={({ field: { onChange, value } }) => (
-            <Picker selectedValue={value} onValueChange={onChange}>
-              <Picker.Item label="Weekly" value="week" />
-              <Picker.Item label="Byweekly" value="byweek" />
-              <Picker.Item label="Monthly" value="month" />
-            </Picker>
+            <WrapperField>
+              <Picker selectedValue={value} onValueChange={onChange}>
+                <Picker.Item
+                  style={{ color: "#808B96" }}
+                  label="Weekly"
+                  value="week"
+                />
+                <Picker.Item
+                  style={{ color: "#808B96" }}
+                  label="Byweekly"
+                  value="byweek"
+                />
+                <Picker.Item
+                  style={{ color: "#808B96" }}
+                  label="Monthly"
+                  value="month"
+                />
+              </Picker>
+            </WrapperField>
           )}
           name="repeat"
           defaultValue="month"

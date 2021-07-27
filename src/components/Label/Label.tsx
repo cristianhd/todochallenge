@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacityProps } from 'react-native';
 import styled from 'styled-components/native';
 
-const ButtonText = styled.Text`
+const LabelForm = styled.Text`
     color: black;
     
   font-size: 18px;
@@ -14,7 +14,7 @@ interface LabelProps extends TouchableOpacityProps{
 }
 const Label = ({ title }:LabelProps)=> (
 
-    <ButtonText style={{fontFamily: "Lexend-SemiBold",}}>{title}</ButtonText>
+    <LabelForm style={{fontFamily: "Lexend-SemiBold",}}>{title}</LabelForm>
   
 );
 export default Label;

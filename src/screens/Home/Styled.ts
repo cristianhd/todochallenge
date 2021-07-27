@@ -1,18 +1,21 @@
 import styled from 'styled-components/native';
 
 export const Container =styled.View`
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content:space-around;
-    height: 600px ;
+    align-items:flex-start;
+    justify-content: space-between;
+    width: auto;
+    height: auto ;
 `;
 
 
 
 export const WrapperButton = styled.View`
 position: relative;
-    padding:20px;
+    padding:10px;
+    width: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

@@ -3,8 +3,8 @@ import { TouchableOpacityProps } from 'react-native';
 import styled from 'styled-components/native';
 const ButtonContainer = styled.TouchableOpacity`
   justify-content: center;
-  position: absolute;
-  width: 360px;
+  position: relative;
+  width: 360;
   height: 55px;
   padding: 20px 0px;
   border-radius: 15px;

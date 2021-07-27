@@ -1,17 +1,26 @@
 import styled from 'styled-components/native';
 
 
+export const Container = styled.View`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+`;
+
 export const Icons = styled.View`
     display: flex;
     flex-direction:row;
     justify-content: space-between;
     width: 100px;
 `;
-export const Container = styled.View`
+export const WrapperNav = styled.View`
+position: relative;
+width: auto;
     display: flex;
     flex-direction:row;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 20px;
     background-color: white;
 `;
