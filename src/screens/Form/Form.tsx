@@ -1,28 +1,19 @@
-import React, { Fragment, useState } from "react";
-import {
-  View,
-  TextInput,
-  Text,
-  Button,
-  Alert,
-  Pressable,
-  GestureResponderEvent,
-  TouchableOpacity,
-} from "react-native";
+import React, { useState } from "react";
+import { TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { Picker } from "@react-native-picker/picker";
-import DateTimePicker, {
-  Event,
-  AndroidEvent,
-} from "@react-native-community/datetimepicker";
-import { useEffect } from "react";
-import { ITask, IAddTaskAction, ADD_TASK } from "../../actions";
+import { ITask, ADD_TASK } from "../../actions";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import uuid from "react-native-uuid";
 import ButtonPrimary from "../../components/Buttons/ButtonPrimary";
 import { FontAwesome5 } from "@expo/vector-icons";
-
+import { WrapperForm } from "./Styled";
+import Label from "../../components/Label/Label";
+import DateTimePicker, {
+  Event,
+  AndroidEvent,
+} from "@react-native-community/datetimepicker";
 import {
   Container,
   Input,
@@ -33,36 +24,31 @@ import {
   WrapperPicker,
   WrapperTime,
 } from "./Styled";
-import { WrapperForm } from "./Styled";
-import Label from "../../components/Label/Label";
-
-type AndroidMode = "date" | "time";
-
-const currentTime = new Date().getHours() + ":" + new Date().getMinutes();
 
 const Form = () => {
+  const currentTime = new Date().getHours() + ":" + new Date().getMinutes();
   const { navigate } = useNavigation();
   const dispatch = useDispatch();
-  const { control, handleSubmit, setValue } = useForm<ITask>();
   const id = uuid.v4();
+
+  const { control, handleSubmit, setValue } = useForm<ITask>();
+  const [date, setDate] = useState<Date>(new Date());
+  const [startime, setStartTime] = useState<string>(currentTime);
+  const [endtime, setEndTime] = useState<string>(currentTime);
+  const [showD, setShowD] = useState<boolean>(false);
+  const [showS, setShowS] = useState<boolean>(false);
+  const [showE, setShowE] = useState<boolean>(false);
+
   const onSubmit = handleSubmit((data) => {
     dispatch({ type: ADD_TASK, payload: { ...data, id } });
     navigate("Home");
   });
-
-  const [date, setDate] = useState<Date>(new Date());
-  const [startime, setStartTime] = useState<string>(currentTime);
-  const [endtime, setEndTime] = useState<string>(currentTime);
-  const [showD, setShowD] = useState<boolean | undefined>(false);
-  const [showS, setShowS] = useState<boolean | undefined>(false);
-  const [showE, setShowE] = useState<boolean | undefined>(false);
 
   const handlerOnChangeDate = (
     e: Event | AndroidEvent,
     selectedDate?: Date | undefined
   ) => {
     const currentDate = selectedDate || date;
-    console.log("date", selectedDate);
 
     if (e.type === "set") {
       setShowD(false);
@@ -70,12 +56,11 @@ const Form = () => {
       setValue("deadline", currentDate);
     }
   };
+
   const handlerOnChangeStartTime = (
     event: Event | AndroidEvent,
     selectedDate?: Date | undefined
   ) => {
-    console.log(selectedDate?.getUTCHours());
-
     const currentTime =
       selectedDate?.getHours().toString() +
       ":" +
@@ -84,14 +69,12 @@ const Form = () => {
       setShowS(false);
       setStartTime(currentTime);
     }
-    // setValue
   };
 
   const handlerOnChangeEndTime = (
     event: Event | AndroidEvent,
     selectedDate?: Date | undefined
   ) => {
-    console.log(selectedDate);
     const currentTime =
       selectedDate?.getHours().toString() +
       ":" +
@@ -101,18 +84,16 @@ const Form = () => {
       setShowE(false);
       setEndTime(currentTime);
     }
-    //SetValue
   };
 
   const showDatepicker = () => {
-    console.log("entre al showdatepicker");
-
     setShowD(true);
   };
 
   const showStarTimepicker = () => {
     setShowS(true);
   };
+
   const showEndTimepicker = () => {
     setShowE(true);
   };

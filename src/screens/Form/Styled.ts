@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 export const Container = styled.View`
   position: absolute;
   width: 100%;
-  
+
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,6 @@ export const TimePickerContainer = styled.View`
 `;
 
 export const Input = styled.TextInput`
- 
   border-radius: 15px;
   background-color: #e8e8e8;
   font-size: 15px;
@@ -27,7 +26,7 @@ export const Input = styled.TextInput`
 `;
 
 export const WrapperTime = styled.View`
-position: relative;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -37,10 +36,9 @@ export const StyleText = styled.Text`
   justify-content: center;
   color: #808b96;
   font-size: 15px;
-  
 `;
 export const WrapperPicker = styled.View`
-padding: 10px;
+  padding: 10px;
   border-radius: 15px;
   background-color: #e8e8e8;
   width: 100%;
@@ -73,5 +71,4 @@ export const WrapperButton = styled.View`
   position: relative;
   padding-top: 20px;
   align-items: center;
-  
 `;

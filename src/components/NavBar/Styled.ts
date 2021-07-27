@@ -45,7 +45,6 @@ export const StyleText = styled.Text`
     active &&
     `
     color:black;
-    
   `}
 `;
 interface ITab {
@@ -54,14 +53,11 @@ interface ITab {
 
 export const TabItem = styled.TouchableOpacity`
   padding: 20px 0px;
-
   ${({ active }: ITab) =>
     active &&
     `
     border-bottom-width: 4px;
-border-style : solid;
-border-color : black;
-
-    
+    border-style : solid;
+    border-color : black;
   `}
 `;

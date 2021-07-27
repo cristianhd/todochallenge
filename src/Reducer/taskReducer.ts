@@ -1,7 +1,5 @@
-import { Reducer } from "react";
-import { ActionSheetIOS } from "react-native";
 import { AnyAction } from "redux";
-import { ADD_TASK, COMPLETE_TODO,CHANGE_TAB, ITask, TaskAction } from "../actions";
+import { ADD_TASK, COMPLETE_TODO, CHANGE_TAB } from "../actions";
 
 export interface taskState {
   tasks: any[];
@@ -28,8 +26,6 @@ const TaskReducer = (state: taskState = initialState, action: AnyAction) => {
         ...state,
         tasks: state.tasks.map((item) => {
           if (item.task.id == action.payload) {
-            console.log("item", item.complete);
-
             return {
               task: item.task,
               complete: !item.complete,
