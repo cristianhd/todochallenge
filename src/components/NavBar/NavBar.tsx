@@ -5,6 +5,7 @@ import { Container, Icons, StyleText, TabItem, Wrapper, WrapperNav } from "./Sty
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Tab, TabView } from "react-native-elements";
+import { CHANGE_TAB } from "../../actions";
 
 const NavBar = () => {
   const [tab, setTab] = useState<number>(0);
@@ -13,7 +14,7 @@ const NavBar = () => {
 
   const onChange = (tab: number) => {
     setTab(tab);
-    dispatch({ type: "CHANGE_TAB", payload: tab });
+    dispatch({ type: CHANGE_TAB, payload: tab });
   };
   
 

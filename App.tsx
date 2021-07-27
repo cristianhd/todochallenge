@@ -8,10 +8,12 @@ import Form from "./src/screens/Form/Form";
 import Home from "./src/screens/Home/Home";
 import { Provider } from "react-redux";
 import store from "./src/store";
+import {persistor} from "./src/store";
 import * as Font from "expo-font";
 import { useEffect } from "react";
-import { loadAsync } from "expo-font";
+
 import { useState } from "react";
+import { PersistGate } from 'redux-persist/integration/react'
 
 const Stack = createStackNavigator();
 
@@ -49,6 +51,7 @@ export default function App() {
   //render app
   return (
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}></PersistGate>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={Home} />

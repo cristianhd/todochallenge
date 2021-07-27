@@ -1,6 +1,7 @@
 import { Reducer } from "react";
 import { ActionSheetIOS } from "react-native";
-import { ITask, TaskAction } from "../actions";
+import { AnyAction } from "redux";
+import { ADD_TASK, COMPLETE_TODO,CHANGE_TAB, ITask, TaskAction } from "../actions";
 
 export interface taskState {
   tasks: any[];
@@ -12,9 +13,9 @@ const initialState = {
   tab: 0,
 };
 
-const TaskReducer = (state: taskState = initialState, action: TaskAction) => {
+const TaskReducer = (state: taskState = initialState, action: AnyAction) => {
   switch (action.type) {
-    case "ADD_TASK":
+    case ADD_TASK:
       return {
         ...state,
         tasks: state.tasks.concat({
@@ -22,7 +23,7 @@ const TaskReducer = (state: taskState = initialState, action: TaskAction) => {
           complete: false,
         }),
       };
-    case "COMPLETE_TODO":
+    case COMPLETE_TODO:
       return {
         ...state,
         tasks: state.tasks.map((item) => {
@@ -39,7 +40,7 @@ const TaskReducer = (state: taskState = initialState, action: TaskAction) => {
         }),
       };
 
-    case "CHANGE_TAB":
+    case CHANGE_TAB:
       return {
         ...state,
         tab: action.payload,

@@ -2,8 +2,7 @@ import { combineReducers } from 'redux';
 import { TaskReducer } from './taskReducer';
 
 const rootReducer = combineReducers({
-  taskReducer: TaskReducer,
-  //some more reducer will come
+  taskReducer: TaskReducer
 });
 
 export type ApplicationState = ReturnType<typeof rootReducer>;

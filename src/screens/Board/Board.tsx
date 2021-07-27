@@ -11,6 +11,7 @@ import { CheckBox } from "react-native-elements";
 import { useDispatch } from "react-redux";
 import { Container, StyleText, Void, WrapperList } from "./Styled";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { COMPLETE_TODO } from "../../actions";
 
 interface BoardProps {
   tasks: any[];
@@ -24,7 +25,7 @@ const Board = ({ tasks, tab }: BoardProps) => {
   const [toggleCheckBox, setToggleCheckBox] = useState<boolean>(false);
 
   const onCheck = (id: string) => {
-    dispatch({ type: "COMPLETE_TODO", payload: id });
+    dispatch({ type: COMPLETE_TODO, payload: id });
   };
 
   console.log("tab", tab);

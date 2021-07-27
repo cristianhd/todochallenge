@@ -1,5 +1,9 @@
 import { GenerateUUID } from "react-native-uuid";
 
+export const ADD_TASK = 'ADD_TASK';
+export const COMPLETE_TODO = 'COMPLETE_TODO';
+export const CHANGE_TAB= 'CHANGE_TAB';
+
 export interface ITask {
   id: GenerateUUID,
   title: string,

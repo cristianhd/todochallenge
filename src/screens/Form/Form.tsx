@@ -16,7 +16,7 @@ import DateTimePicker, {
   AndroidEvent,
 } from "@react-native-community/datetimepicker";
 import { useEffect } from "react";
-import { ITask, IAddTaskAction } from "../../actions";
+import { ITask, IAddTaskAction, ADD_TASK } from "../../actions";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import uuid from "react-native-uuid";
@@ -46,7 +46,7 @@ const Form = () => {
   const { control, handleSubmit, setValue } = useForm<ITask>();
   const id = uuid.v4();
   const onSubmit = handleSubmit((data) => {
-    dispatch({ type: "ADD_TASK", payload: { ...data, id } });
+    dispatch({ type: ADD_TASK, payload: { ...data, id } });
     navigate("Home");
   });
 
