@@ -31,16 +31,16 @@ const NavBar = () => {
       </WrapperNav>
       <Wrapper>
         <TabItem active={tab===0} onPress={() => onChange(0)}>
-          <StyleText active={tab===0} style={{ fontFamily: "Lexend-Regular", fontSize: 18 }}>All</StyleText>
+          <StyleText active={tab===0} style={{ fontFamily: "Lexend-Regular", fontSize: 16 }}>All</StyleText>
         </TabItem>
         <TabItem active={tab===1}onPress={() => onChange(1)}>
-          <StyleText  active={tab===1} style={{ fontFamily: "Lexend-Regular", fontSize: 18 }}>Completed</StyleText>
+          <StyleText  active={tab===1} style={{ fontFamily: "Lexend-Regular", fontSize: 16 }}>Completed</StyleText>
         </TabItem>
         <TabItem active={tab===2}onPress={() => onChange(2)}>
-          <StyleText active={tab===2} style={{ fontFamily: "Lexend-Regular", fontSize: 18 }}>Uncompleted</StyleText>
+          <StyleText active={tab===2} style={{ fontFamily: "Lexend-Regular", fontSize: 16 }}>Uncompleted</StyleText>
         </TabItem>
         <TabItem active={tab===3}onPress={() => onChange(3)}>
-          <StyleText active={tab===3} style={{ fontFamily: "Lexend-Regular", fontSize: 18 }}>Favorite</StyleText>
+          <StyleText active={tab===3} style={{ fontFamily: "Lexend-Regular", fontSize: 16 }}>Favorite</StyleText>
         </TabItem>
       </Wrapper>
     </Container>

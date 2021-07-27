@@ -1,3 +1,4 @@
+import { FlatList } from "react-native";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -5,7 +6,7 @@ export const Container = styled.View`
     
     padding: 20px;
     width: 100%;
-    height: 70%;
+    height: 60%;
     background-color: white;
 `;
 
@@ -23,4 +24,15 @@ position: relative;
     align-items: center;
     
 
+`;
+export const WrapperList = styled.View`
+    position: relative;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+`;
+
+export const StyleText = styled.Text`
+    padding-left: 10px;
 `;

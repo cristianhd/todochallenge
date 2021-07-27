@@ -21,7 +21,7 @@ import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import uuid from "react-native-uuid";
 import ButtonPrimary from "../../components/Buttons/ButtonPrimary";
-import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 import {
   Container,

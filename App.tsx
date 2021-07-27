@@ -23,6 +23,7 @@ export default function App() {
       await Font.loadAsync({
         "Lexend-Regular": require("./assets/Fonts/Lexend-Regular.ttf"),
         "Lexend-SemiBold": require("./assets/Fonts/Lexend-SemiBold.ttf"),
+        "Lexend-Medium": require("./assets/Fonts/Lexend-Medium.ttf"),
       });
     } catch (error) {
       console.log(error);
