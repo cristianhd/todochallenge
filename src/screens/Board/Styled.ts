@@ -6,14 +6,14 @@ export const Container = styled.View`
     padding: 20px;
     width: 100%;
     height: 70%;
-    background-color: red;
+    background-color: white;
 `;
 
 export const Void = styled.View`
     position: relative;
     padding: 10px;
     height: 100%;
-    background-color: blue;
+    background-color: white;
 `;
 
 export const WrapperButton = styled.View`
