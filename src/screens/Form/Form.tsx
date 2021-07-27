@@ -20,11 +20,12 @@ import { ITask, IAddTaskAction } from "../../actions";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import uuid from "react-native-uuid";
-import PressableButton from "../../components/Button";
+import PressableButton from "../../components/Button/Button";
 
 import {
   Container,
   Input,
+  StyleText,
   TimePickerContainer,
   WrapperButton,
   WrapperField,
@@ -125,7 +126,8 @@ const Form = () => {
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
-              placeholder="  Design team meeting"
+            defaultValue=""
+              placeholder="     Design team meeting"
               placeholderTextColor="#808B96"
               onBlur={onBlur}
               onChangeText={onChange}
@@ -145,7 +147,7 @@ const Form = () => {
           render={({ field: { value } }) => (
             <WrapperField>
               <TouchableOpacity onPress={() => showDatepicker()}>
-                <Text>{`${date.toISOString().slice(0, 10)} `}</Text>
+                <StyleText>{`${date.toISOString().slice(0, 10)} `}</StyleText>
                 {showD && (
                   <DateTimePicker
                     value={value}
@@ -178,7 +180,7 @@ const Form = () => {
               render={() => (
                 <WrapperField>
                   <TouchableOpacity onPress={() => showStarTimepicker()}>
-                    <Text>{`${startime} `}</Text>
+                    <StyleText>{`${startime} `}</StyleText>
                   </TouchableOpacity>
                   {showS && (
                     <DateTimePicker
@@ -210,7 +212,7 @@ const Form = () => {
               render={() => (
                 <WrapperField>
                   <TouchableOpacity onPress={() => showEndTimepicker()}>
-                    <Text>{`${endtime} `}</Text>
+                    <StyleText>{`${endtime} `}</StyleText>
                   </TouchableOpacity>
                   {showE && (
                     <DateTimePicker
@@ -244,18 +246,18 @@ const Form = () => {
             <WrapperField>
               <Picker selectedValue={value} onValueChange={onChange}>
                 <Picker.Item
-                  style={{ color: "#808B96" }}
-                  label="10 minutes early"
+                  style={{ color: "#808B96" ,fontFamily:"Lexend-Regular",fontSize: 18}}
+                  label="  10 minutes early"
                   value="10min"
                 />
                 <Picker.Item
-                  style={{ color: "#808B96" }}
-                  label="1 hour early"
+                  style={{ color: "#808B96" ,fontFamily:"Lexend-Regular",fontSize: 15}}
+                  label="  1 hour early"
                   value="1hr"
                 />
                 <Picker.Item
-                  style={{ color: "#808B96" }}
-                  label="24 hours early"
+                  style={{ color: "#808B96" ,fontFamily:"Lexend-Regular",fontSize: 15}}
+                  label="  24 hours early"
                   value="24hr"
                 />
               </Picker>
@@ -275,25 +277,25 @@ const Form = () => {
             <WrapperField>
               <Picker selectedValue={value} onValueChange={onChange}>
                 <Picker.Item
-                  style={{ color: "#808B96" }}
-                  label="Weekly"
+                  style={{ color: "#808B96" ,fontFamily:"Lexend-Regular",fontSize: 18}}
+                  label="  Weekly"
                   value="week"
                 />
                 <Picker.Item
-                  style={{ color: "#808B96" }}
-                  label="Byweekly"
+                  style={{ color: "#808B96" ,fontFamily:"Lexend-Regular",fontSize: 18}}
+                  label="  Byweekly"
                   value="byweek"
                 />
                 <Picker.Item
-                  style={{ color: "#808B96" }}
-                  label="Monthly"
+                  style={{ color: "#808B96" ,fontFamily:"Lexend-Regular",fontSize: 18}}
+                  label="  Monthly"
                   value="month"
                 />
               </Picker>
             </WrapperField>
           )}
           name="repeat"
-          defaultValue="month"
+          defaultValue="week"
         />
         <WrapperButton>
           <PressableButton title="Create a Task" onPress={onSubmit} />

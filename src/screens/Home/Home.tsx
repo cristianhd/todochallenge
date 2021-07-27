@@ -4,11 +4,18 @@ import { useSelector } from "react-redux";
 import Board from "../Board/Board";
 import NavBar from "../../components/NavBar/NavBar";
 import { Container, WrapperButton } from "./Styled";
-import PressableButton from "../../components/Button";
+import PressableButton from "../../components/Button/Button";
+import { useNavigation } from "@react-navigation/native";
+import { taskState } from "../../reducer/taskReducer";
 
-const Home = ({ navigation }) => {
-  const data = useSelector((state) => state);
-  console.log("Home", data.taskReducer.tab);
+interface Idata{
+  taskReducer:taskState
+}
+
+const Home = () => {
+  const data = useSelector((state:Idata) => state);
+  console.log("Home", data);
+  const { navigate } = useNavigation();
 
   return (
     <Container>
@@ -17,8 +24,8 @@ const Home = ({ navigation }) => {
       <WrapperButton>
         <PressableButton
           title="Add a task"
-          onPress={() => navigation.navigate("Add task")}
-          color="#5dbc75"
+          onPress={() => navigate("Add task")}
+          
         />
       </WrapperButton>
     </Container>

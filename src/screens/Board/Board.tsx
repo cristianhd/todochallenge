@@ -16,7 +16,7 @@ interface BoardProps {
 }
 
 const Board = ({ tasks, tab }: BoardProps) => {
-  console.log("board", 0 === true);
+  console.log("board");
 
   const dispatch = useDispatch();
   const [toggleCheckBox, setToggleCheckBox] = useState<boolean>(false);

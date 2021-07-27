@@ -6,8 +6,9 @@ export const Container =styled.View`
     flex-direction: column;
     align-items:flex-start;
     justify-content: space-between;
-    width: auto;
-    height: auto ;
+    width: 100%;
+    height: 100% ;
+    background-color: white;
 `;
 
 
@@ -15,7 +16,7 @@ export const Container =styled.View`
 export const WrapperButton = styled.View`
 position: relative;
     padding:10px;
-    width: auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
