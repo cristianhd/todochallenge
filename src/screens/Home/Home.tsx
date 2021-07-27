@@ -7,6 +7,8 @@ import { Container, WrapperButton } from "./Styled";
 import ButtonPrimary from "../../components/Buttons/ButtonPrimary";
 import { useNavigation } from "@react-navigation/native";
 import { taskState } from "../../reducer/taskReducer";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { persistedReducer } from "../../store";
 
 interface Idata{
   taskReducer:taskState
@@ -16,7 +18,9 @@ const Home = () => {
   const data = useSelector((state:Idata) => state);
   console.log("Home", data);
   const { navigate } = useNavigation();
-
+  
+  
+  
   return (
     <Container>
       <NavBar/>

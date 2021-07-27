@@ -7,13 +7,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Form from "./src/screens/Form/Form";
 import Home from "./src/screens/Home/Home";
 import { Provider } from "react-redux";
-import store from "./src/store";
-import {persistor} from "./src/store";
+
+import {store ,persistor} from "./src/store";
 import * as Font from "expo-font";
 import { useEffect } from "react";
 
 import { useState } from "react";
 import { PersistGate } from 'redux-persist/integration/react'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createStackNavigator();
 
@@ -32,7 +33,11 @@ export default function App() {
     }
   };
 
+  
+  
   useEffect(() => {
+    
+    
     const setFonts = async (): Promise<any> => {
       await loadAsync();
       setLoadFonts(true);
