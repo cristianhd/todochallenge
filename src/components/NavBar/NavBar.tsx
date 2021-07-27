@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { Button, Pressable, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
-import { Container, Icons, Wrapper } from "./Styles";
+import { Container, Icons, Wrapper } from "./Styled";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Tab, TabView } from "react-native-elements";
@@ -35,13 +35,16 @@ const NavBar = () => {
 
       <Tab value={tab} 
         onChange={onChange} 
-        indicatorStyle={{borderBottomColor: "black",borderBottomWidth:5,}}
+        indicatorStyle={{opacity:100,backgroundColor:"white" , borderBottomColor: "black",borderBottomWidth:5,}}
         
-        style={{backgroundColor:"white",padding:"0"}}>
+       
         
-        <Tab.Item style={{backgroundColor:"white"}} titleStyle={{fontFamily: "Lexend-Regular", fontSize: 10,color:"gray",textTransform:"capitalize"}}  title="All"/>
-        <Tab.Item style={{backgroundColor:"white"}} titleStyle={{fontFamily: "Lexend-Regular", fontSize: 10,color:"gray",textTransform:"capitalize"}} title="Complete" />
-        <Tab.Item style={{backgroundColor:"white"}} titleStyle={{fontFamily: "Lexend-Regular", fontSize: 10,color:"gray",textTransform:"capitalize"}} title="Uncomplete" />
+        >
+
+        
+        <Tab.Item style={{backgroundColor:"white"}} titleStyle={{margin: 0 ,fontFamily: "Lexend-Regular", fontSize: 10,color:"gray",textTransform:"capitalize"}}  title="All"/>
+        <Tab.Item style={{backgroundColor:"white"}} titleStyle={{fontFamily: "Lexend-Regular", fontSize: 10,color:"gray",textTransform:"capitalize"}} title="Comp" />
+        <Tab.Item style={{backgroundColor:"white"}} titleStyle={{fontFamily: "Lexend-Regular", fontSize: 10,color:"gray",textTransform:"capitalize"}} title="Uncom" />
         <Tab.Item style={{backgroundColor:"white"}} titleStyle={{fontFamily: "Lexend-Regular", fontSize: 10,color:"gray",textTransform:"capitalize"}} title="Favorite" />
       </Tab>
       </Wrapper>

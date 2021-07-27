@@ -11,6 +11,7 @@ export const Container = styled.View`
     display: flex;
     flex-direction:row;
     justify-content: space-between;
+    align-items: center;
     padding: 20px;
     background-color: white;
 `;
@@ -18,12 +19,16 @@ export const Container = styled.View`
 export const  Wrapper = styled.View`
     display: flex;
     flex-direction:row;
-    align-items: center;
+    padding: 0px 20px 0px 20px;
     justify-content: center;
-    padding:0px 20px;
-    
+    align-items: center;
+    border:1px;
+    border-top-color: gray;
+    border-bottom-color: gray;
+    border-left-color: white;
+    border-right-color: white;
     background-color: white;
-    
+        
 `;
 
 
